@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::prefix('news')->group(function() {
+//Route::group(['middleware' => ['auth']], function () {
+Route::prefix('news')->group(function() {
+    Route::get('/', 'AdminNewsController@index')->name('news.index');
+    Route::get('/{id}', 'AdminNewsController@show')->name('news.show');
+    Route::get('/create', 'AdminNewsController@show')->name('news.create');
+    Route::get('/edit/{id}', 'AdminNewsController@edit')->name('news.edit');
+});
+//});

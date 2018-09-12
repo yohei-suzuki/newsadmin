@@ -34,7 +34,8 @@ class AdminNewsController extends Controller
      */
     public function create()
     {
-        return('news admin create');
+        //return('news admin ccccccreate');
+        return view('news.create');
     }
 
     /**
@@ -45,7 +46,24 @@ class AdminNewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title'   => 'required|max:191',
+            'content' => 'required',
+            'cate'   => 'required|max:191',
+            'repo'   => 'required|max:191',
+        ]);
+        
+        $news = new News();
+        
+        $news->title = $request->title;
+        $news->content = $request->content;
+        $news->cate = $request->cate;
+        $news->repo = $request->repo;
+        $news->save();
+        
+        //return("post! title:$request->title" );
+        $url = route('news.index');
+        return redirect($url);
     }
 
     /**
@@ -56,7 +74,10 @@ class AdminNewsController extends Controller
      */
     public function show($id)
     {
-        return("admin news $id");
+        $news = News::find($id);
+        
+        //return("admin news $id");
+        return view('news.show', ['news' => $news]);
     }
 
     /**
@@ -67,7 +88,10 @@ class AdminNewsController extends Controller
      */
     public function edit($id)
     {
-        return("admin news edit $id");
+        $news = News::find($id);
+        
+        //return("admin news edit $id");
+        return view('news.edit', ['news' => $news]);
     }
 
     /**
@@ -79,7 +103,16 @@ class AdminNewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $news = News::find($id);
+        $news->title = $request->title;
+        $news->content = $request->content;
+        $news->cate = $request->cate;
+        $news->repo = $request->repo;
+        $news->save();
+        
+        $url = route('news.index');
+        return redirect($url);
     }
 
     /**

@@ -20,8 +20,8 @@ class AdminNewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();  
-
+        //$news = News::all();  
+        $news = News::paginate(3);
         return view('news.index', ['news' => $news]);
         //return('news admin index');
         //return view('news.index');
@@ -123,6 +123,6 @@ class AdminNewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return("delete $id");
     }
 }

@@ -6,8 +6,10 @@
     @foreach($news as $d)
         <a href="{{ route('news.show', ['id' => $d->id]) }}">{{ $d->id }}</a> 
         {{ $d->title }} 
-        <a href="news/{{ $d->id }}/edit">edit</a><br>
+        <a href="news/{{ $d->id }}/edit">edit</a>
+        <br>
     @endforeach
+    {!! $news->render() !!}
 @endisset
 <hr>
 <a href="/">TOP</a>

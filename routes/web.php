@@ -27,6 +27,7 @@ Route::prefix('news')->group(function() {
     Route::get('{id}', 'AdminNewsController@show')->name('news.show');
     Route::get('{id}/edit', 'AdminNewsController@edit')->name('news.edit');
     Route::put('{id}' ,'AdminNewsController@update')->name('news.update');
+    Route::delete('{id}', 'AdminNewsController@destroy')->name('news.destroy');
     
     //Route::resource('/', 'AdminNewsController');
 });

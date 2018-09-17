@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\News;
+use App\NewsCategory;
+use App\NewsRepoter;
 
 class AdminNewsController extends Controller
 {
@@ -34,8 +36,15 @@ class AdminNewsController extends Controller
      */
     public function create()
     {
-        //return('news admin ccccccreate');
-        return view('news.create');
+        $categorys = NewsCategory::all();
+        $repoters = NewsRepoter::all();
+        return view(
+            'news.create',
+            [
+                'categorys' => $categorys,
+                'repoters' => $repoters,
+                ]
+        );
     }
 
     /**
@@ -76,8 +85,17 @@ class AdminNewsController extends Controller
     {
         $news = News::find($id);
         
-        //return("admin news $id");
-        return view('news.show', ['news' => $news]);
+        $news_cate = NewsCategory::where('id', '=', $news->category_id)->first();
+        $news_repo = NewsRepoter::where('id', '=', $news->repoter_id)->first();
+        //dd($news_cate);
+        
+        return view(
+            'news.show', 
+            [
+            'news' => $news, 
+            'category' => $news_cate->name,
+            'repoter' => $news_repo->name,
+            ]);
     }
 
     /**
@@ -89,9 +107,17 @@ class AdminNewsController extends Controller
     public function edit($id)
     {
         $news = News::find($id);
+        $categorys = NewsCategory::all();
+        $repoters = NewsRepoter::all();
         
         //return("admin news edit $id");
-        return view('news.edit', ['news' => $news]);
+        return view(
+            'news.edit', 
+            [
+                'news' => $news,
+                'categorys' => $categorys,
+                'repoters' => $repoters,
+                ]);
     }
 
     /**
@@ -103,7 +129,13 @@ class AdminNewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $this->validate($request, [
+            'title'   => 'required|max:191',
+            'content' => 'required',
+            'cate'   => 'required|max:191',
+            'repo'   => 'required|max:191',
+        ]);
+        
         $news = News::find($id);
         $news->title = $request->title;
         $news->content = $request->content;

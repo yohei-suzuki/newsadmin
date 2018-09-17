@@ -10,8 +10,21 @@
     content<br>
     <textarea name="content" cols="100" rows="15"></textarea> <br><br>
     cate<br>
-    <input type="text" name="cate"><br><br>
+    <select name="cate">
+        @foreach($categorys as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select>
+    <br>
+    <br>
     repo<br>
-    <input type="text" name="repo"><br><br>
+    <select name="repo">
+        @foreach($repoters as $repoter)
+            <option value="{{ $repoter->id }}">{{ $repoter->name }}</option>
+        @endforeach
+    </select>
+    <br>
+    <br>
     <input type='submit' value="そうしん">
 </form>
+

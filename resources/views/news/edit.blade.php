@@ -9,12 +9,26 @@
     title<br>
     <input type="hidden" name="id" value="{{ $news->id }}">
     <input type="text" name="title" value="{{ $news->title }}"><br><br>
+    
     content<br>
     <textarea name="content" cols="100" rows="15">{{ $news->content }}</textarea> <br><br>
+    
     cate<br>
-    <input type="text" name="cate" value="{{ $news->category_id }}"><br><br>
+    <select name="cate">
+        @foreach($categorys as $category)
+            <option value="{{ $category->id }}" @if(old('cate', $category->id)==$category->id) selected  @endif>{{ $category->name }}</option>
+        @endforeach
+    </select>
+    <br><br>
+    
     repo<br>
-    <input type="text" name="repo" value="{{ $news->repoter_id }}"><br><br>
+    <select name="repo">
+        @foreach($repoters as $repoter)
+            <option value="{{ $repoter->id }}" @if(old('repo', $repoter->id)==$repoter->id) selected  @endif>{{ $repoter->name }}</option>
+        @endforeach
+    </select>
+    <br><br>
+    
     <input type='submit' value="送信">
 </form>
 <hr>

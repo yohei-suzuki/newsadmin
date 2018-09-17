@@ -12,9 +12,9 @@
     content<br>
     <textarea name="content" cols="100" rows="15">{{ $news->content }}</textarea> <br><br>
     cate<br>
-    <input type="text" name="cate" value="{{ $news->cate }}"><br><br>
+    <input type="text" name="cate" value="{{ $news->category_id }}"><br><br>
     repo<br>
-    <input type="text" name="repo" value="{{ $news->repo }}"><br><br>
+    <input type="text" name="repo" value="{{ $news->repoter_id }}"><br><br>
     <input type='submit' value="送信">
 </form>
 <hr>

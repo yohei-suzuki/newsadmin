@@ -57,8 +57,8 @@ class AdminNewsController extends Controller
         
         $news->title = $request->title;
         $news->content = $request->content;
-        $news->cate = $request->cate;
-        $news->repo = $request->repo;
+        $news->category_id = $request->cate;
+        $news->repoter_id = $request->repo;
         $news->save();
         
         //return("post! title:$request->title" );
@@ -107,8 +107,8 @@ class AdminNewsController extends Controller
         $news = News::find($id);
         $news->title = $request->title;
         $news->content = $request->content;
-        $news->cate = $request->cate;
-        $news->repo = $request->repo;
+        $news->category_id = $request->cate;
+        $news->repoter_id = $request->repo;
         $news->save();
         
         $url = route('news.index');

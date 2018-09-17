@@ -22,11 +22,9 @@ class AdminNewsController extends Controller
      */
     public function index()
     {
-        //$news = News::all();  
-        $news = News::paginate(5);
+ 
+        $news = News::orderby('id', 'desc')->paginate(5);
         return view('news.index', ['news' => $news]);
-        //return('news admin index');
-        //return view('news.index');
     }
 
     /**

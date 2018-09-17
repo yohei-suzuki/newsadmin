@@ -11,7 +11,9 @@
             {{ csrf_field() }}
         </form>
         <hr>
-        <a href="{{ route('news.index') }}">news</a>
+        <a href="{{ route('news.index') }}">news</a><br>
+        <a href="{{ route('newscate.index') }}">news categorys</a><br>
+        <a href="{{ route('newsrepo.index') }}">news repoters</a>
 @else
     <a href="{{ route('login') }}">login</a>
 @endif

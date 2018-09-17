@@ -31,3 +31,21 @@ Route::prefix('news')->group(function() {
     
     //Route::resource('/', 'AdminNewsController');
 });
+
+Route::prefix('newscate')->group(function() {
+   Route::get('', 'NewsCategoryController@index')->name('newscate.index'); 
+   Route::get('create', 'NewsCategoryController@create')->name('newscate.create');
+   Route::post('store', 'NewsCategoryController@store')->name('newscate.store');
+   Route::get('{id}/edit', 'NewsCategoryController@edit')->name('newscate.edit');
+   Route::put('{id}' ,'NewsCategoryController@update')->name('newscate.update');
+   Route::delete('{id}', 'NewsCategoryController@destroy')->name('newscate.destroy');
+});
+
+Route::prefix('newsrepo')->group(function() {
+   Route::get('', 'NewsRepoterController@index')->name('newsrepo.index'); 
+   Route::get('create', 'NewsRepoterController@create')->name('newsrepo.create');
+   Route::post('store', 'NewsRepoterController@store')->name('newsrepo.store');
+   Route::get('{id}/edit', 'NewsRepoterController@edit')->name('newsrepo.edit');
+   Route::put('{id}' ,'NewsRepoterController@update')->name('newsrepo.update');
+   Route::delete('{id}', 'NewsRepoterController@destroy')->name('newsrepo.destroy');
+});

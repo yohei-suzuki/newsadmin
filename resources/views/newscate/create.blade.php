@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>newsCate create</h1>
 <hr>
 
@@ -10,3 +14,5 @@
 </form>
 <hr>
 <a href="{{ route('newscate.index') }}">news category top</a>
+
+@endsection

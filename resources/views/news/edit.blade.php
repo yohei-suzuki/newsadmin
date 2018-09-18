@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>edit</h1>
 <hr>
 
@@ -43,3 +47,5 @@
 </form>
 <hr>
 <a href="{{ route('news.index') }}">back</a>
+
+@endsection

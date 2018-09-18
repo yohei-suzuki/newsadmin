@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>news create</h1>
 <hr>
 
@@ -30,3 +34,4 @@
 <hr>
 <a href="{{ route('news.index') }}">back</a>
 
+@endsection

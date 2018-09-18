@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>newsRepo create</h1>
 <hr>
 
@@ -10,3 +14,5 @@
 </form>
 <hr>
 <a href="{{ route('newsrepo.index') }}">news repoter top</a>
+
+@endsection

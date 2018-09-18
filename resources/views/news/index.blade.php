@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>news index</h1>
 <hr>
 <a href="{{ route('news.create') }}">create</a>
@@ -13,3 +17,5 @@
 @endisset
 <hr>
 <a href="/">TOP</a>
+
+@endsection
